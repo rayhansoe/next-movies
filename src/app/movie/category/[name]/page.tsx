@@ -1,0 +1,40 @@
+import { Card } from "@/components/Card";
+import { getListItem, getMovies, getTrending } from "@/services/tmdbAPI";
+import Link from "next/link";
+
+const getData = async (name: any) => {
+  try {
+    const items =
+      name === "trending"
+        ? await getTrending("movie")
+        : await getMovies(name);
+    return { items };
+  } catch {
+    throw new Error("Data not available");
+  }
+}
+
+export default async function MovieCategories({
+	params,
+}: {
+	params: {
+		name: string;
+	};
+}) {
+  const data = await getData(params.name)
+
+  return (
+    <main className="main">
+      <div className="listing">
+        <div className="listing__head">
+          <h2 className="listing__title">
+            {getListItem("movie", params.name)?.TITLE}
+          </h2>
+        </div>
+        <div className="listing__items">
+          {data?.items.results.map((item:any) => <Card key={item.id} item={item} />)}
+        </div>
+      </div>
+    </main>
+  );
+}
