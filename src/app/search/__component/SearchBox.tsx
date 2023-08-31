@@ -36,7 +36,7 @@ export default function SearchBox(props:any) {
   return (
     <>
       <div className={styles.form}>
-        <form action={onSubmit} autoComplete="off" onSubmit={(e) => e.preventDefault()}>
+        <form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
           <label className="visuallyhidden" htmlFor="q">
             Search
           </label>
