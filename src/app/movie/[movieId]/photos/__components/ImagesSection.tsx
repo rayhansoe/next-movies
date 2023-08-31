@@ -1,5 +1,3 @@
-'use client';
-import { For } from 'million/react';
 import ImagesItem  from './ImagesItem';
 
 export default function ImagesSection(props: any) {
@@ -10,9 +8,7 @@ export default function ImagesSection(props: any) {
 				<strong className='images__count'> {props.images?.length} Images </strong>
 			</div>
 			<div className='images__items'>
-				<For each={props.images as any[]}>
-					{(image) => <ImagesItem type={props.title.toLowerCase()} image={image} />}
-				</For>
+				{props.images.map((image: any) => <ImagesItem key={image.file_path} type={props.title.toLowerCase()} image={image} />)}
 			</div>
 		</div>
 	);

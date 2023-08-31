@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const path = require('path')
-const million = require('million/compiler')
+// const million = require('million/compiler')
  
 // module.exports = {
 //   sassOptions: {
@@ -20,10 +20,10 @@ const nextConfig = {
   },
 };
  
-const millionConfig = {
-  auto: true,
-  // if you're using RSC:
-  auto: { rsc: true },
-}
+// const millionConfig = {
+//   auto: true,
+//   // if you're using RSC:
+//   auto: { rsc: true },
+// }
  
-module.exports = million.next(nextConfig, millionConfig);
+module.exports = nextConfig

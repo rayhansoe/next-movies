@@ -1,4 +1,6 @@
 "use client";
+
+
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "./SearchBox.module.scss";
 import { useEffect, useState } from "react";
