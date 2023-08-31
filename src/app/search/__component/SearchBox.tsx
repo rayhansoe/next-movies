@@ -60,13 +60,13 @@ export default function SearchBox(props:any) {
               // keyup="goToRoute"
               // blur="unFocus"
               // onInput={(e) => debouncedUpdate(e.currentTarget.value)}
-              onKeyUp={(e) => {
-                e.preventDefault();
-                if (e.key === "Enter") {
-                  // debouncedUpdate.clear();
-                  update(e.currentTarget.value);
-                }
-              }}
+              // onKeyUp={(e) => {
+              //   e.preventDefault();
+              //   if (e.key === "Enter") {
+              //     // debouncedUpdate.clear();
+              //     update(e.currentTarget.value);
+              //   }
+              // }}
               value={value}
               onChange={(e) => setValue(e.target.value)}
             />
