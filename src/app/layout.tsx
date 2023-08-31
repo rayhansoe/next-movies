@@ -10,7 +10,10 @@ import NextTopLoader from 'nextjs-toploader';
 export const runtime = 'edge' // 'nodejs' (default) | 'edge'
 
 export const metadata: Metadata = {
-	title: 'Next Movies',
+	title: {
+		template: '%s | Next Movies',
+		default: 'Next Movies'
+	},
 	description:
 		'A TMDB client built with Next App to show the potential of it ✨',
 };

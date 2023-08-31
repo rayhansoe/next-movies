@@ -12,12 +12,12 @@ export default function SearchBox(props:any) {
   const router = useRouter();
   const pathname = usePathname()
 
-  // const update = (newValue: string) => {
-  //   if (newValue.length && newValue !== value) {
-  //     setValue(newValue);
-  //     router.push(`${pathname}?q=${newValue}`);
-  //   }
-  // };
+  const update = (newValue: string) => {
+    if (newValue.length && newValue !== value) {
+      setValue(newValue);
+      router.push(`${pathname}?q=${newValue}`);
+    }
+  };
 
   // const debouncedUpdate = debounce(update, 500);
 
@@ -50,13 +50,13 @@ export default function SearchBox(props:any) {
               // keyup="goToRoute"
               // blur="unFocus"
               // onInput={(e) => debouncedUpdate(e.currentTarget.value)}
-              // onKeyUp={(e) => {
-              //   e.preventDefault();
-              //   if (e.key === "Enter") {
-              //     // debouncedUpdate.clear();
-              //     update(e.currentTarget.value);
-              //   }
-              // }}
+              onKeyUp={(e) => {
+                e.preventDefault();
+                if (e.key === "Enter") {
+                  // debouncedUpdate.clear();
+                  update(e.currentTarget.value);
+                }
+              }}
               defaultValue={value}
             />
             <button
