@@ -1,16 +1,17 @@
 "use client";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 // import { debounce } from "@solid-primitives/scheduled";
 // import { createSignal } from "solid-js";
 // import { useLocation, useNavigate } from "solid-start";
 import styles from "./SearchBox.module.scss";
 import { useState } from "react";
-import submit from "../action";
+// import submit from "../action";
 
 export default function SearchBox(props:any) {
   const [value, setValue] = useState(props.value || "");
   const router = useRouter();
   const pathname = usePathname()
+  // const searchParams = useSearchParams();
 
   const update = (newValue: string) => {
     if (newValue.length && newValue !== value) {
@@ -26,17 +27,26 @@ export default function SearchBox(props:any) {
   };
 
   
-  async function onSubmit(formData: FormData) {
-    console.log(formData);
-    
-    await submit(formData)
-    // setMessage(res.message)
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    // const val = e.target as HTMLFormElement;
+    // const search = val.search as HTMLInputElement;
+    // const newParams = new URLSearchParams(searchParams.toString());
+
+    // if (search.value) {
+    //   newParams.set('q', search.value);
+    // } else {
+    //   newParams.delete('q');
+    // }
+
+    router.push(`${pathname}?q=${value}`);
   }
 
   return (
     <>
       <div className={styles.form}>
-        <form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
+        <form autoComplete="off" onSubmit={onSubmit}>
           <label className="visuallyhidden" htmlFor="q">
             Search
           </label>
@@ -57,7 +67,8 @@ export default function SearchBox(props:any) {
                   update(e.currentTarget.value);
                 }
               }}
-              defaultValue={value}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
             />
             <button
               v-if="showButton"
