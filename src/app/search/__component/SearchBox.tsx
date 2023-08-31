@@ -4,14 +4,18 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 // import { createSignal } from "solid-js";
 // import { useLocation, useNavigate } from "solid-start";
 import styles from "./SearchBox.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import submit from "../action";
 
 export default function SearchBox(props:any) {
   const [value, setValue] = useState(props.value || "");
   const router = useRouter();
   const pathname = usePathname()
-  // const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    setValue(searchParams?.get('q') || '');
+  }, [searchParams]);
 
   const update = (newValue: string) => {
     if (newValue.length && newValue !== value) {
@@ -30,8 +34,8 @@ export default function SearchBox(props:any) {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    // const val = e.target as HTMLFormElement;
-    // const search = val.search as HTMLInputElement;
+    const val = e.target as HTMLFormElement;
+    const search = val.q as HTMLInputElement;
     // const newParams = new URLSearchParams(searchParams.toString());
 
     // if (search.value) {
@@ -40,19 +44,20 @@ export default function SearchBox(props:any) {
     //   newParams.delete('q');
     // }
 
-    router.push(`${pathname}?q=${value}`);
+    router.push(`${pathname}?q=${search.value || value}`);
   }
 
   return (
     <>
       <div className={styles.form}>
-        <form autoComplete="off" onSubmit={onSubmit}>
+        <form onSubmit={onSubmit}>
           <label className="visuallyhidden" htmlFor="q">
             Search
           </label>
 
           <div className={styles.field}>
             <input
+              autoComplete="off"
               id="q"
               name="q"
               type="text"
