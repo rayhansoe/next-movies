@@ -25,32 +25,12 @@ export default async function Search({
           </label>
 
           <div className={styles.field}>
-            {/* <input
-              id="q"
-              name="q"
-              type="text"
-              autoComplete="off"
-              placeholder="Search for a movie, tv show or person..."
-              // keyup="goToRoute"
-              // blur="unFocus"
-              // onInput={(e) => debouncedUpdate(e.currentTarget.value)}
-              // onKeyUp={(e) => {
-              //   e.preventDefault();
-              //   if (e.key === "Enter") {
-              //     // debouncedUpdate.clear();
-              //     // update(e.currentTarget.value);
-              //   }
-              // }}
-              defaultValue={searchParams.q}
-            /> */}
-            <InputBox value={searchParams.q} />
+            <InputBox value={searchParams.q || ''} />
             <button
               v-if="showButton"
               type="button"
               aria-label="Close"
-              // onClick={goBack}
             >
-              {/* <CrossIcon /> */}
             </button>
           </div>
         </form>
