@@ -16,8 +16,8 @@ export default async function Search({
 
 	return (
 		<main className='main'>
-			<SearchBox value={searchParams.q || ''} />
-			{/* <div className={styles.form}>
+			{/* <SearchBox value={searchParams.q || ''} /> */}
+			<div className={styles.form}>
         <form action={submit} autoComplete="off">
           <label className="visuallyhidden" htmlFor="q">
             Search
@@ -47,11 +47,11 @@ export default async function Search({
               aria-label="Close"
               // onClick={goBack}
             >
-              <CrossIcon />
+              {/* <CrossIcon /> */}
             </button>
           </div>
         </form>
-      </div> */}
+      </div>
 			{data && (
 				<div className='listing'>
 					<div className='listing__head'>
