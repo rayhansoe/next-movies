@@ -3,6 +3,7 @@ import { search } from '@/services/tmdbAPI';
 import SearchBox from './__component/SearchBox';
 import styles from "./__component/SearchBox.module.scss";
 import submit from './action';
+import InputBox from './__component/InputBox';
 
 export default async function Search({
 	searchParams,
@@ -18,16 +19,17 @@ export default async function Search({
 		<main className='main'>
 			{/* <SearchBox value={searchParams.q || ''} /> */}
 			<div className={styles.form}>
-        <form action={submit} autoComplete="off">
+        <form action={submit}>
           <label className="visuallyhidden" htmlFor="q">
             Search
           </label>
 
           <div className={styles.field}>
-            <input
+            {/* <input
               id="q"
               name="q"
               type="text"
+              autoComplete="off"
               placeholder="Search for a movie, tv show or person..."
               // keyup="goToRoute"
               // blur="unFocus"
@@ -40,7 +42,8 @@ export default async function Search({
               //   }
               // }}
               defaultValue={searchParams.q}
-            />
+            /> */}
+            <InputBox value={searchParams.q} />
             <button
               v-if="showButton"
               type="button"
