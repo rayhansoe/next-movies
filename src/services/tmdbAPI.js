@@ -1,4 +1,3 @@
-import { revalidatePath } from "next/cache";
 
 /**
  * API url
@@ -173,7 +172,6 @@ function getPerson(id) {
  */
 
 function search(query, page = 1) {
-  // revalidatePath(`/search/${query}`)
   if (!query) return null
   return fetchTMD("search/multi", { query, page });
 }

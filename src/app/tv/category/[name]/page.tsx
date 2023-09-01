@@ -1,6 +1,5 @@
 import { Card } from "@/components/Card";
 import { getListItem, getTrending, getTvShows } from "@/services/tmdbAPI";
-import { revalidatePath } from "next/cache";
 import Link from "next/link";
 
 const getData = async (name:any) => {
@@ -9,7 +8,6 @@ const getData = async (name:any) => {
       name === "trending"
         ? await getTrending("tv")
         : await getTvShows(name);
-    revalidatePath(`/tv/${name}`)
     return { items };
   } catch {
     throw new Error("Data not available");

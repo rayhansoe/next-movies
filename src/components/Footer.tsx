@@ -26,7 +26,7 @@ export default function Footer() {
       </p>
       <p>
         Designed by the Nuxt Movies authors, and ported by the Solid Movies
-        authors, with the original data provided by&nbsp;
+        authors, and re-ported using the nextjs app router by me, with the original data provided by&nbsp;
         <a target="_blank" href="https://www.themoviedb.org/" rel="noopener">
           TMDb
         </a>
@@ -36,7 +36,7 @@ export default function Footer() {
       <ul className="nolist">
         <li>
           <a
-            href="https://twitter.com/solidjs"
+            href="https://twitter.com/rayhansoe"
             target="_blank"
             aria-label="Link to Twitter account"
             rel="noopener"
@@ -46,7 +46,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            href="https://github.com/solidjs/solid-start/tree/movies/examples/movies"
+            href="https://github.com/rayhansoe/next-movies"
             target="_blank"
             aria-label="Link to GitHub account"
             rel="noopener"
@@ -56,7 +56,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            href="mailto:hello@jason.codes"
+            href="mailto:rayhan.rhssoe2@gmail.com"
             aria-label="Link to Email"
             rel="noopener"
           >

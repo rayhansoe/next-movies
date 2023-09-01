@@ -1,6 +1,5 @@
 import { getPerson } from '@/services/tmdbAPI';
 import { PersonInfo } from './PersonInfo';
-import { revalidatePath } from 'next/cache';
 
 import { Metadata } from 'next'
  
@@ -15,7 +14,6 @@ const getData = async (id: number | string | any) => {
 		if (item.adult) {
 			throw new Error('Data not available');
 		} else {
-			revalidatePath(`/person/${id}`);
 			return { item };
 		}
 	} catch {
